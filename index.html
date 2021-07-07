@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缘来是你</title>
+</head>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        .main {
+            background-color: #f3f5f7;
+            width: 100%;
+            height: 700%;
+            position: relative;
+        }
+        #nav {
+            margin-top: 10px;
+            line-height: 5;
+        }
+        #nav-li {
+            margin: -8px auto;
+            height: 120px;
+            background-image: url(second_images/背景.jpg);
+        }
+        #nav-li ul {
+            list-style: none;
+            margin-left: 50px;
+        }
+        #nav li {
+            display: inline;
+        }
+        #nav a {
+            line-height: 40px;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px,20px;
+        }
+        #nav a:hover {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            font-size: 24px;
+        }
+        .search {
+            text-align: center;
+            margin: -112px auto;
+        }
+        #searchArea {
+            width: 225px;
+            height: 30px;
+            caret-color: hotpink;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+        #clickButton {
+            margin-left: -7px;
+            width: 60px;
+            height: 34px;
+            background-color: rgb(76, 196, 218);
+            border: 1px solid #fff;
+        }            
+        #clickButton:hover {
+            background-color: #fff;
+        }
+        .show {
+            width: 840px;
+            height: 480px;
+            position: relative;
+            margin: 20px auto;
+        }
+        .list {
+            width: 840px;
+            height: 480px;
+            list-style: none;
+            position: relative;
+            padding-left: 0;
+        }
+        .item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            font-size: 20px;
+            opacity: 0;
+            transition: all .5s;
+        }
+        .item:nth-child(1) {
+            background-image: url(second_images/1.jpg);
+        }
+        .item:nth-child(2) {
+            background-image: url(second_images/2.jpg);
+        }
+        .item:nth-child(3) {
+            background-image: url(second_images/3.png);
+        }
+        .item:nth-child(4) {
+            background-image: url(second_images/4.jpg);
+        }
+        .item:nth-child(5) {
+            background-image: url(second_images/5.jpg);
+        }
+        .item.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .btn {
+            width: 40px;
+            height: 60px;
+            position: absolute;
+            background-color: rgba(255,255,255,0.4);
+            outline: none;
+            top: 190px;
+            z-index: 100;
+        }
+        #prev {
+            left: 0px;
+        }
+        #next {
+            right: 0px;
+        }
+        .pointList {
+            padding-left: 0px;
+            list-style: none;
+            right: 20px;
+            bottom: -10px;
+            position: absolute;
+            z-index: 1000;
+        }
+        .point {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0,0,0,.4);
+            border-radius: 100%;
+            float: left;
+            margin-right: 14px;
+            cursor: pointer;
+        }
+        .point.active {
+            background-color: rgba(255,255,255,.8);
+        }
+        #details p {
+            font-weight: 700;
+            height: 10px;
+            transition: all 0.4s;
+        }
+        #details p:hover {
+            transform: scale(1.1);
+        }
+        #details span {
+            font-size: 14px;
+            color: rgb(145, 142, 142);
+            margin-left: -550px;
+        }
+        #details {
+            width: 100%;
+            background-color: #fff;
+            height: 500px;
+        }
+        .imgDetails {
+            width: 500px;
+            height: 290px;
+            color: #fff;
+            transition: all 0.4s;
+        }
+        .imgDetails:hover {
+            transform: translateY(-15px);
+        }
+        h1 {
+            color: blueviolet;
+            transition: all 0.4s;
+        }
+        h1:hover {
+            transform: scale(1.1);
+        }
+        #details .box-img1 {
+            float: right;
+            margin-right: 50px;
+            margin-top: 250px;
+            margin-bottom: -120px;
+        }
+        .box-img {
+            float: left;
+            margin-left: 50px;
+            margin-top: 63px;
+            margin-bottom: -39px;
+        }
+        .tab {
+            width: 100%;
+            height: 300px;
+            float: left;
+            position: absolute;
+            bottom: -1545px;
+        }
+        .tab-list {
+            width: 100%;
+            height: 35px;
+            background-color: #fff;
+            
+        }
+        .tab-list ul {
+            text-align: center;
+        }
+        .tab-list li {
+            list-style: none;
+            display: inline-block;
+            transition: all .4s;
+            width: 200px;
+            height: 35px;
+        }
+        .tab-list li:hover {
+            transform: scale(1.1);
+        }
+        .tab-list ul .active {
+            background-color: #ddd;
+        }
+        .list-img1 {
+            width: 100%;
+            height: 242px;
+        }
+        .list-img1 ul {
+            text-align: center;
+        }
+        .list-img1 ul li {
+            list-style: none;
+            display: inline-block;
+            background-color: #ddd;
+            width: 81px;
+            height: 81px;
+            margin: 10px;
+            overflow: hidden;
+            transition: all .4s;
+        }
+        .list-img1 li:hover {
+            transform: scale(1.1);
+        }
+        .footerImg {
+            width: 100%;
+            height: 150px;
+            position: absolute;
+            bottom: -1810px;
+            background-image: url("second_images/footer.jpg");
+        }
+        .footer {
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+            opacity: 0.8;
+            margin-top: 1450px;
+            position: absolute;
+            text-align: center;
+        }
+        .intrduce dl {
+            float: left;
+            margin-left: 100px;
+        }
+        .intrduce dt {
+            font-weight: 700;
+            left:0;
+
+        }
+        .intrduce dd a{
+            text-decoration: none;
+            font-size: 12px;
+            color: #333;
+        }
+        .ittle-image {
+            width: 200px;
+            height: 200px;
+            display: inline;
+        }
+        .little-image img {
+            width: 200px;
+            height: 200px;
+            display: inline;
+            float: left;
+            color: #fff;
+            margin-left: 100px;
+        }
+        .little-image #img2{
+            width: 185px;
+            height: 185px;
+            display: inline;
+            float: left;
+            color: #fff;
+        }
+    </style>
+<body>
+    <div class = "main">
+        <!--搜索栏-->
+        <div id = "nav"> 
+            <ul id = "nav-li">
+                <li><a href="#">首页</a></li>
+                <li><a href="#details">详情</a></li>
+                <li><a href="#tab">资源</a></li>
+                <li><a href="ylsn/index.html">动态</a></li>
+                <li><a href="story.html" target="_blank">故事</a></li>
+                <li><a href="#footer">联系我们</a></li>
+                <div class= "search">
+                <input type="text" id="searchArea" value="请输入关键词">
+                <input type="button" id="clickButton" value="搜索">
+            </ul>
+        </div>
+        </div>
+        <!--轮播图-->
+        <div class="show">
+            <ul class="list">
+                <li class="item active"></li>
+                <li class="item"></li>
+                <li class="item"></li>
+                <li class="item"></li>
+                <li class="item"></li>
+            </ul>
+            <ul class="pointList">
+                <li class="point active" data-index = "0"></li>
+                <li class="point" data-index = "1"></li>
+                <li class="point" data-index = "2"></li>
+                <li class="point" data-index = "3"></li>
+                <li class="point" data-index = "4"></li>
+            </ul>
+            <button type = "button" class="btn" id="prev"><</button>
+            <button type = "button" class="btn" id="next">></button>
+        </div>
+
+        <div id = "details">
+            <p>有缘详情</p>
+            <span>因缘而聚，寻你所爱......</span>
+            <div class="box-img">
+                <h1 class="num">01</h1>
+                <p>线下门店</p>
+                <img src="second_images/f1.jpg" alt="" class = "imgDetails">
+            </div>
+            <div class="box-img1">
+                <h1 class="num">02</h1>
+                <p>会员享受一对一服务</p>
+                <img src="second_images/f2.png" alt="" class = "imgDetails">
+            </div>
+            <div class="box-img">
+                <h1 class="num">03</h1>
+                <p>安全隐私保护</p>
+                <img src="second_images/f3.png" alt="" class = "imgDetails">
+            </div>
+            <div class="box-img1">
+                <h1 class="num">04</h1>
+                <p>精选优质会员</p>
+                <img src="second_images/f4.png" alt="" class = "imgDetails">
+            </div>
+        </div>
+        <div class="tab" id="tab">
+            <p style="font-weight: 700;">资源</p>
+            <div class="tab-list" >
+                
+                <ul>
+                    <li class="active">18-25</li>
+                    <li class="">26-35</li>
+                    <li class="">36-45</li>
+                    <li class="">46-55</li>
+                </ul>
+            </div>
+            <div class="list-img1">
+                <div class="list-img" style="display: block;">
+                    <ul>
+                        <li class=""><img src="second_images/1.jpg" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li><br />
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                    </ul>
+                </div>
+                <div class="list-img" style="display: none;">
+                    <ul>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li><br />
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>                    
+                    </ul>
+                </div>
+                <div class="list-img" style="display: none;">
+                    <ul>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li><br />
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>  
+                    </ul>
+                </div>
+                <div class="list-img" style="display: none;">
+                    <ul>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li><br />
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>
+                        <li class=""><img src="" alt=""></li>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footerImg"></div>
+        <div class="footer" id = "footer">
+            <div class="intrduce">
+                <dl>
+                    <dt>关于缘来是你</dt>
+                    <dd><a href="#">关于</a></dd>
+                    <dd><a href="#">管理团队</a></dd>
+                    <dd><a href="#">工作机会</a></dd>
+                    <dd><a href="#">客户服务</a></dd>
+                    <dd><a href="#">帮助</a></dd>
+                </dl>
+                <dl>
+                    <dt>联系我们</dt>
+                    <dd><a href="#">客服QQ</a></dd>
+                    <dd><a href="#">客服微信</a></dd>
+                    <dd><a href="#">客服电话</a></dd>
+                    <dd><a href="#">举报热线</a></dd>
+                </dl>
+                <dl>
+                    <dt>友情链接</dt>
+                    <dd><a href="https://www.baihe.com/">百合网</a></dd>
+                    <dd><a href="https://www.jiayuan.com/">世纪佳缘</a></dd>
+                    <dd><a href="https://www.zhenai.com/?channelId=900122">珍爱网</a></dd>
+                    <dd><a href="http://www.youyuan.com/">有缘网</a></dd>
+                    <dd><a href="http://www.hongniang.com/">都市红娘</a></dd>
+                </dl>
+            </div>
+            <div class="little-image">
+                <img src="second_images/二维码.png" alt="">
+            </div>
+            <div class="little-image">
+                <img src="second_images/二维码2.png" alt="" id = "img2">
+            </div>
+        </div>
+    </div>
+    <script>
+        var items = document.getElementsByClassName("item");
+        var prevBtn = document.getElementById("prev");
+        var nextBtn = document.getElementById("next");
+        var points = document.getElementsByClassName("point");
+        var index = 0;//第几张图片
+        var time = 0;
+        var searchArea = document.querySelector("#searchArea");
+        var tab_list = document.querySelector(".tab-list");
+        var lis = tab_list.querySelectorAll("li");
+        var lis_img = document.querySelectorAll(".list-img");
+        
+        for(var i = 0;i < lis.length; i++) {
+            lis[i].setAttribute('index',i);
+            lis[i].onclick = function() {
+                for(var i = 0;i < lis.length;i++) {
+                lis[i].className = '';
+                }
+            this.className = "active";
+            var index = this.getAttribute("index");
+            for(var i = 0;i < lis_img.length;i++) {
+                lis_img[i].style.display = "none";
+            }
+            lis_img[index].style.display = "block";
+            }
+        }
+
+        searchArea.onfocus = function() {
+            if(this.value === "请输入关键词")
+            this.value = '';
+        }
+        searchArea.onblur = function() {
+            if(this.value === '') {
+                this.value = "请输入关键词";
+            }
+        }
+        var clearActive = function() {
+            for(var i = 0 ;i < items.length ;i++) {
+                items[i].className = 'item';
+                points[i].className = "point";
+            }
+        }
+        var goIndex = function() {
+            clearActive();
+            items[index].className = 'item active';
+            points[index].className = "point active";
+        }
+        var next = function() {
+            if(index < 4) {
+            index++;
+            }
+            else {
+                index = 0;
+            }
+            goIndex();
+        }
+        nextBtn.addEventListener('click',function(){
+            next();
+        })
+        
+        var prev = function() {
+            if(index == 0) {
+                index = 4;
+            }
+            else {
+                index--;
+            }
+            goIndex();
+        }
+        prevBtn.addEventListener('click',function(){
+            prev();
+        }) 
+        for(var i = 0; i < points.length;i ++) {
+            points[i].addEventListener('click',function(){
+                var pointIndex = this.getAttribute("data-index");
+                index = pointIndex;
+                goIndex();
+                time = 0;
+            })
+        }
+        setInterval(function(){
+            time++;
+            if(time == 20) {
+                next();
+                time = 0;
+            }
+        },100)
+    </script>
+</body>
+</html>
