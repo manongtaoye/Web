@@ -297,6 +297,7 @@
 <script>
         var account = document.querySelector("#account");
         var password = document.querySelector("#password");
+        var check = document.querySelector(".check");
         //登录模块
         account.onfocus = function() {
             if(this.value === "账号/电子邮箱/电话号码")
@@ -319,9 +320,11 @@
         function login() {
         if((account.value == account1)&&(password.value == password1)) {
             alert("登录成功");
+            location.href = "index.html";
         }
         else {
             alert("账号或者密码错误");
+            check.herf = "#";
         }
         }
         //打字机特效
